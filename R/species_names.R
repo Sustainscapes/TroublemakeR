@@ -9,14 +9,8 @@
 #' @export
 #'
 #' @examples
-#' data(Species)
-#' library(terra)
-#' Test <- Species[[1]] |>
-#' terra::unwrap()
 #'
-#' # Generate the "Problem.dat" file
-#'
-#' define_cells(Test[[1]])
+#' species_names(species_names = c("Spp1", "Spp2"))
 #'
 #' @author Derek Corcoran
 species_names <- function(species_names = NULL){

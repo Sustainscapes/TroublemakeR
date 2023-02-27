@@ -16,14 +16,8 @@ A character vector to be used in troblemaker
 This function takes a vector of species names and adds it to the problem in problemaker
 }
 \examples{
-data(Species)
-library(terra)
-Test <- Species[[1]] |>
-terra::unwrap()
 
-# Generate the "Problem.dat" file
-
-define_cells(Test[[1]])
+species_names(species_names = c("Spp1", "Spp2"))
 
 }
 \author{

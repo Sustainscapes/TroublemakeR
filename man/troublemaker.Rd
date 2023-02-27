@@ -8,6 +8,8 @@ troublemaker(
   Rasterdomain = NULL,
   Rastercurrent = NULL,
   species_names = NULL,
+  Rasterspecieslanduse = NULL,
+  landuses = NULL,
   name = "Problem",
   verbose = FALSE
 )
@@ -18,6 +20,10 @@ troublemaker(
 \item{Rastercurrent}{raster object of current suitability}
 
 \item{species_names}{a vector with the names of species}
+
+\item{Rasterspecieslanduse}{a list of species suitability for each landuse}
+
+\item{landuses}{character vector with all landuses}
 
 \item{name}{The name of the output file}
 
@@ -31,6 +37,7 @@ A .dat file with the spatial problem formated for AMPL
 This function is a metafunction with several functions inside of it it takes several spatial objects and generates a .dat file with a spatial dataset for AMPL
 }
 \examples{
+# Example 1 with current suitabilities
 data(Species)
 data(Current)
 library(terra)
@@ -49,6 +56,30 @@ name = "Problem")
 # delete the file so the test on cran can pass this
 
 file.remove("Problem.dat")
+
+# Example 2 with landuse suitabilities
+
+data(Species)
+data("Species_Landuse")
+
+library(terra)
+Test <- Species[[1]] |>
+terra::unwrap()
+
+Species_Landuse <- Species_Landuse |> purrr::map(terra::unwrap)
+
+# Generate the "Problem2.dat" file
+
+TroublemakeR::troublemaker(Rasterdomain =Test[[1]],
+Rasterspecieslanduse = Species_Landuse,
+species_names = c("Spp1", "Spp2", "Spp3", "Spp4"),
+landuses = c("Agriculture", "Forest", "Urban"),
+name = "Problem2")
+
+# delete the file so the test on cran can pass this
+
+file.remove("Problem2.dat")
+
 }
 \author{
 Derek Corcoran
