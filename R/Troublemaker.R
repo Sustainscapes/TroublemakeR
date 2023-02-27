@@ -75,6 +75,12 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
       message("TempSpeciesNames ready")
     }
   }
+  if(!is.null(landuses)){
+    TempLanduses <-  TroublemakeR::landuse_names(landuses = landuses)
+    if(verbose){
+      message("TempLanduses ready")
+    }
+  }
   if(!is.null(species_names) & !is.null(Rastercurrent)){
     TempSpeciesSuitability <-  TroublemakeR::species_suitability(Rastercurrent = Rastercurrent, species_names = species_names)
     if(verbose){
@@ -100,6 +106,11 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
     cat(TempSpeciesNames)
     cat("\n")
   }
+  if(!is.null(landuses)){
+    cat(TempLanduses)
+    cat("\n")
+  }
+
   if(!is.null(species_names) & !is.null(Rastercurrent)){
     cat(TempSpeciesSuitability)
     cat("\n")
