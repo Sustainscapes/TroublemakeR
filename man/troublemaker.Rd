@@ -8,7 +8,8 @@ troublemaker(
   Rasterdomain = NULL,
   Rastercurrent = NULL,
   species_names = NULL,
-  name = "Problem"
+  name = "Problem",
+  verbose = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ troublemaker(
 \item{species_names}{a vector with the names of species}
 
 \item{name}{The name of the output file}
+
+\item{verbose}{Logical whether messages will be written while the
+function is generating calculations, defaults to FALSE}
 }
 \value{
 A .dat file with the spatial problem formated for AMPL

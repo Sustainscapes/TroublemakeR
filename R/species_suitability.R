@@ -19,7 +19,7 @@ species_suitability <- function(Rastercurrent, species_names){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
   result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(paste) |> paste(collapse = " ")
-  paste(c("param SpeciesSuitability :=", result), collapse = " ")
+  paste(c("param SpeciesSuitability :=", result,  ";"), collapse = " ")
 }
 
 

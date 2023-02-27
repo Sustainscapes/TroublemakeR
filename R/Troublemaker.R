@@ -7,6 +7,8 @@
 #' @param Rastercurrent raster object of current suitability
 #' @param species_names a vector with the names of species
 #' @param name The name of the output file
+#' @param verbose Logical whether messages will be written while the
+#' function is generating calculations, defaults to FALSE
 #' @return A .dat file with the spatial problem formated for AMPL
 #'
 #' @export
@@ -32,20 +34,29 @@
 #' file.remove("Problem.dat")
 #' @author Derek Corcoran
 
-troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_names = NULL, name = "Problem"){
+troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_names = NULL, name = "Problem", verbose = FALSE){
   if(!is.null(Rasterdomain)){
     TempDomain <-  TroublemakeR::define_cells(Rasterdomain = Rasterdomain)
-    message("TempDomain ready")
+    if(verbose){
+      message("TempDomain ready")
+    }
   }
   if(!is.null(species_names)){
     TempSpeciesNames <-  TroublemakeR::species_names(species_names = species_names)
-    message("TempSpeciesNames ready")
+    if(verbose){
+      message("TempSpeciesNames ready")
+    }
   }
   if(!is.null(species_names) & !is.null(Rastercurrent)){
     TempSpeciesSuitability <-  TroublemakeR::species_suitability(Rastercurrent = Rastercurrent, species_names = species_names)
-    message("TempSpeciesSuitability ready")
+    if(verbose){
+      message("TempSpeciesSuitability ready")
+    }
   }
-  message("Starting to write")
+  if(verbose){
+    message("Starting to write")
+  }
+
   sink(paste0(name, ".dat"))
   if(!is.null(Rasterdomain)){
     cat(TempDomain)
