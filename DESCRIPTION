@@ -15,3 +15,5 @@ LazyData: true
 Imports: 
     purrr,
     terra
+URL: https://github.com/Sustainscapes/TroublemakeR
+BugReports: https://github.com/Sustainscapes/TroublemakeR/issues
