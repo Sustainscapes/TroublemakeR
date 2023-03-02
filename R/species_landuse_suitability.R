@@ -31,7 +31,7 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
   }
   Result <- Result |> purrr::reduce(c)
 
-  Result <- paste(c("param SpeciesSuitabilityLaduse :=", Result, ";"), collapse = " ")
+  Result <- paste(c("param SpeciesSuitabilityLanduse :=", Result, ";"), collapse = " ")
 
   gsub(Result, pattern = "\\[", replacement = "\n [")
 }
