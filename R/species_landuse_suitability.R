@@ -49,7 +49,7 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
   }
 
   sink(paste0(name, ".dat"), append = T)
-  cat(";")
+  cat(" ;")
   sink()
 }
 

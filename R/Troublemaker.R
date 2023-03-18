@@ -145,7 +145,7 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
     gc()
   }
   if(!is.null(species_names) & !is.null(Rasterspecieslanduse) & !is.null(landuses)){
-    TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses)
+    TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses,name = name)
     if(verbose){
       message("TempSpeciesSuitabilityLanduse ready")
     }
