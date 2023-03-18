@@ -4,7 +4,12 @@
 \alias{species_suitability_landuse}
 \title{Calculate species suitability for each landuse}
 \usage{
-species_suitability_landuse(Rasterspecieslanduse, species_names, landuses)
+species_suitability_landuse(
+  Rasterspecieslanduse,
+  species_names,
+  landuses,
+  name = "Problem"
+)
 }
 \arguments{
 \item{Rasterspecieslanduse}{a list of species suitability for each landuse}
@@ -12,6 +17,8 @@ species_suitability_landuse(Rasterspecieslanduse, species_names, landuses)
 \item{species_names}{character vector of species names}
 
 \item{landuses}{character vector with all landuses}
+
+\item{name}{The name of the output file}
 }
 \value{
 character string of species suitabilities for each landuse
@@ -25,6 +32,6 @@ data("Species_Landuse")
 Species_Landuse <- Species_Landuse |> purrr::map(terra::unwrap)
 species_suitability_landuse(Rasterspecieslanduse = Species_Landuse,
 species_names = c("Spp1", "Spp2", "Spp3", "Spp4"),
-landuses = c("Agriculture", "Forest", "Urban"))
+landuses = c("Agriculture", "Forest", "Urban"), name = "Test")
 
 }

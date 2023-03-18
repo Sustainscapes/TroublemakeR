@@ -65,60 +65,91 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
                          name = "Problem", verbose = FALSE){
   if(!is.null(Rasterdomain)){
     TempDomain <-  TroublemakeR::define_cells(Rasterdomain = Rasterdomain)
+    if(file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = T)
+      cat(TempDomain)
+      cat("\n")
+      sink()
+    }
+    if(!file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = F)
+      cat(TempDomain)
+      cat("\n")
+      sink()
+    }
+
     if(verbose){
       message("TempDomain ready")
     }
+    rm(TempDomain)
+    gc()
   }
   if(!is.null(species_names)){
     TempSpeciesNames <-  TroublemakeR::species_names(species_names = species_names)
+    if(file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = T)
+      cat(TempSpeciesNames)
+      cat("\n")
+      sink()
+    }
+    if(!file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = F)
+      cat(TempSpeciesNames)
+      cat("\n")
+      sink()
+    }
     if(verbose){
       message("TempSpeciesNames ready")
     }
+    rm(TempSpeciesNames)
+    gc()
   }
   if(!is.null(landuses)){
     TempLanduses <-  TroublemakeR::landuse_names(landuses = landuses)
+    if(file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = T)
+      cat(TempLanduses)
+      cat("\n")
+      sink()
+    }
+    if(!file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = F)
+      cat(TempLanduses)
+      cat("\n")
+      sink()
+    }
     if(verbose){
       message("TempLanduses ready")
     }
+    rm(TempLanduses)
+    gc()
   }
   if(!is.null(species_names) & !is.null(Rastercurrent)){
     TempSpeciesSuitability <-  TroublemakeR::species_suitability(Rastercurrent = Rastercurrent, species_names = species_names)
+    if(file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = T)
+      cat(TempSpeciesSuitability)
+      cat("\n")
+      sink()
+    }
+    if(!file.exists(paste0(name, ".dat"))){
+      sink(paste0(name, ".dat"), append = F)
+      cat(TempSpeciesSuitability)
+      cat("\n")
+      sink()
+    }
     if(verbose){
       message("TempSpeciesSuitability ready")
     }
+    rm(TempSpeciesSuitability)
+    gc()
   }
   if(!is.null(species_names) & !is.null(Rasterspecieslanduse) & !is.null(landuses)){
-    TempSpeciesSuitabilityLanduse <-  TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses)
+    TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses)
     if(verbose){
       message("TempSpeciesSuitabilityLanduse ready")
     }
+    gc()
   }
-  if(verbose){
-    message("Starting to write")
-  }
-
-  sink(paste0(name, ".dat"))
-  if(!is.null(Rasterdomain)){
-    cat(TempDomain)
-    cat("\n")
-  }
-  if(!is.null(species_names)){
-    cat(TempSpeciesNames)
-    cat("\n")
-  }
-  if(!is.null(landuses)){
-    cat(TempLanduses)
-    cat("\n")
-  }
-
-  if(!is.null(species_names) & !is.null(Rastercurrent)){
-    cat(TempSpeciesSuitability)
-    cat("\n")
-  }
-  if(!is.null(species_names) & !is.null(Rasterspecieslanduse) & !is.null(landuses)){
-    cat(TempSpeciesSuitabilityLanduse)
-    cat("\n")
-  }
-  sink()
 }
 
