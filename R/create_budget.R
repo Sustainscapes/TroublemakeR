@@ -45,7 +45,7 @@ create_budget <- function(budget, Rastercurrentlanduse, landuses, name = "Proble
   }
 
   sink(paste0(name, ".dat"), append = T)
-  cat(paste("param TransitionCost :=","\n"))
+  cat(paste("param TransitionCost :="))
   sink()
 
   for(i in 1:length(landuses)){
