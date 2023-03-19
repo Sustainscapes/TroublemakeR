@@ -8,6 +8,8 @@
 #' @param Rasterspecieslanduse a list of species suitability for each landuse
 #' @param species_names a vector with the names of species
 #' @param landuses character vector with all landuses
+#' @param budget maximum cost for the problem
+#' @param Rastercurrentlanduse raster object of current landuses
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
@@ -59,10 +61,28 @@
 #'
 #' file.remove("Problem2.dat")
 #'
+#'  # Example 3 with budget and transition cost
+#'
+#'  data("CurrentLanduse")
+#'  CurrentLU <- terra::unwrap(CurrentLanduse)
+#'  TroublemakeR::troublemaker(Rasterdomain =Test[[1]],
+#'  Rasterspecieslanduse = Species_Landuse,
+#'  species_names = c("Spp1", "Spp2", "Spp3", "Spp4"),
+#'  landuses = c("Agriculture", "Forest", "Urban"),
+#'  Rastercurrentlanduse = CurrentLU,
+#'  budget = 2,
+#'  name = "Problem3",
+#'  verbose = T)
+#'
+#'  file.remove("Problem3.dat")
+#'
 #' @author Derek Corcoran
 
 troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_names = NULL, Rasterspecieslanduse = NULL, landuses = NULL,
-                         name = "Problem", verbose = FALSE){
+                         budget = NULL,
+                         Rastercurrentlanduse = NULL,
+                         name = "Problem",
+                         verbose = FALSE){
   if(!is.null(Rasterdomain)){
     TempDomain <-  TroublemakeR::define_cells(Rasterdomain = Rasterdomain)
     if(file.exists(paste0(name, ".dat"))){
@@ -145,9 +165,17 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
     gc()
   }
   if(!is.null(species_names) & !is.null(Rasterspecieslanduse) & !is.null(landuses)){
-    TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses,name = name)
+    TroublemakeR::species_suitability_landuse(Rasterspecieslanduse =  Rasterspecieslanduse, species_names = species_names, landuses = landuses,name = name, verbose = verbose)
     if(verbose){
       message("TempSpeciesSuitabilityLanduse ready")
+    }
+    gc()
+  }
+
+  if(!is.null(budget) & !is.null(Rastercurrentlanduse) & !is.null(landuses)){
+    TroublemakeR::create_budget(budget, Rastercurrentlanduse, landuses, name = name, verbose = verbose)
+    if(verbose){
+      message("budget and transition cost ready")
     }
     gc()
   }

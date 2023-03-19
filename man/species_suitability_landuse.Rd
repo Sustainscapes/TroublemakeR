@@ -8,7 +8,8 @@ species_suitability_landuse(
   Rasterspecieslanduse,
   species_names,
   landuses,
-  name = "Problem"
+  name = "Problem",
+  verbose = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ species_suitability_landuse(
 \item{landuses}{character vector with all landuses}
 
 \item{name}{The name of the output file}
+
+\item{verbose}{Logical whether messages will be written while the
+function is generating calculations, defaults to FALSE}
 }
 \value{
 character string of species suitabilities for each landuse

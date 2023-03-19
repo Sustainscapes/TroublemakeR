@@ -10,6 +10,8 @@ troublemaker(
   species_names = NULL,
   Rasterspecieslanduse = NULL,
   landuses = NULL,
+  budget = NULL,
+  Rastercurrentlanduse = NULL,
   name = "Problem",
   verbose = FALSE
 )
@@ -24,6 +26,10 @@ troublemaker(
 \item{Rasterspecieslanduse}{a list of species suitability for each landuse}
 
 \item{landuses}{character vector with all landuses}
+
+\item{budget}{maximum cost for the problem}
+
+\item{Rastercurrentlanduse}{raster object of current landuses}
 
 \item{name}{The name of the output file}
 
@@ -79,6 +85,21 @@ name = "Problem2")
 # delete the file so the test on cran can pass this
 
 file.remove("Problem2.dat")
+
+ # Example 3 with budget and transition cost
+
+ data("CurrentLanduse")
+ CurrentLU <- terra::unwrap(CurrentLanduse)
+ TroublemakeR::troublemaker(Rasterdomain =Test[[1]],
+ Rasterspecieslanduse = Species_Landuse,
+ species_names = c("Spp1", "Spp2", "Spp3", "Spp4"),
+ landuses = c("Agriculture", "Forest", "Urban"),
+ Rastercurrentlanduse = CurrentLU,
+ budget = 2,
+ name = "Problem3",
+ verbose = T)
+
+ file.remove("Problem3.dat")
 
 }
 \author{

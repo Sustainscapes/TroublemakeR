@@ -45,3 +45,12 @@
 #' }
 #'
 "Current"
+
+#' A PackedSpatRaster of the current landuse
+#'
+#' @format ##  A PackedSpatRaster with 1 layer:
+#' \describe{
+#'   \item{Landuse}{current landuse}
+#' }
+#'
+"CurrentLanduse"

@@ -4,6 +4,8 @@
 #' @param species_names character vector of species names
 #' @param landuses character vector with all landuses
 #' @param name The name of the output file
+#' @param verbose Logical whether messages will be written while the
+#' function is generating calculations, defaults to FALSE
 #' @return character string of species suitabilities for each landuse
 #' @export
 #'
@@ -20,7 +22,7 @@
 #' @importFrom terra as.data.frame
 #
 
-species_suitability_landuse <- function(Rasterspecieslanduse, species_names, landuses, name = "Problem"){
+species_suitability_landuse <- function(Rasterspecieslanduse, species_names, landuses, name = "Problem", verbose = FALSE){
 
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
@@ -46,6 +48,9 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
     rm(Result)
     rm(SuitabilityLanduseTemp)
     gc()
+    if(verbose){
+      message(paste("species", i, "of", length(Rasterspecieslanduse), "ready!", Sys.time()))
+    }
   }
 
   sink(paste0(name, ".dat"), append = T)
