@@ -53,7 +53,7 @@ create_budget <- function(budget, Rastercurrentlanduse, landuses, name = "Proble
     Template[!is.na(Template)] <- 1
     Template[Rastercurrentlanduse == landuses[i]] <- 0
     Template <- as.data.frame(Template, cells = T)
-    Template <- paste0(paste0("[", landuses[i], ","), paste0(Template$cell, "]", " ", as.vector(Template$Sutiability)))
+    Template <- paste0(paste0("[", Template$cell, ","), paste0(landuses[i], "]", " ", as.vector(Template$Sutiability)))
     sink(paste0(name, ".dat"), append = T)
     cat(gsub(Template, pattern = "\\[", replacement = "\n ["))
     sink()
