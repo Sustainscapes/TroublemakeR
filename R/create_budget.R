@@ -45,12 +45,12 @@ create_budget <- function(budget, Rastercurrentlanduse, landuses, name = "Proble
   }
 
   sink(paste0(name, ".dat"), append = T)
-  cat(paste("param TransitionCost :="))
+  cat(paste("param TransitionCost default 1 :="))
   sink()
 
   for(i in 1:length(landuses)){
     Template <- as.numeric(Rastercurrentlanduse)
-    Template[!is.na(Template)] <- 1
+    Template[!is.na(Template)] <- NA
     Template[Rastercurrentlanduse == landuses[i]] <- 0
     Template <- as.data.frame(Template, cells = T)
     Template <- paste0(paste0("[", Template$cell, ","), paste0(landuses[i], "]", " ", as.vector(Template$Sutiability)))

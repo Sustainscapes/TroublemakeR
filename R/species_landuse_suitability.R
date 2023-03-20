@@ -26,12 +26,12 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
 
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
-    cat("param SpeciesSuitabilityLanduse :=")
+    cat("param SpeciesSuitabilityLanduse default 0 :=")
     sink()
   }
   if(!file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = F)
-    cat("param SpeciesSuitabilityLanduse :=")
+    cat("param SpeciesSuitabilityLanduse default 0 :=")
     sink()
   }
 
@@ -59,6 +59,8 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
 }
 
 paste_suitabilities_landuse <- function(df, species, colname){
-  paste0(paste0("[", species, ",", colname, ","), paste0(df$cell, "]", " ", as.vector(df[colname][,1])))
+  filtered_df <- df[df[[colname]] == 1, ]
+  paste0(paste0("[", species, ",", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
 }
+
 

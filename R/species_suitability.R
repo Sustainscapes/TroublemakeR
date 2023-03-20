@@ -19,12 +19,13 @@ species_suitability <- function(Rastercurrent, species_names){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
   result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(paste) |> paste(collapse = " ")
-  paste(c("param SpeciesSuitability :=", result,  ";"), collapse = " ")
+  paste(c("param SpeciesSuitability default 0 :=", result,  ";"), collapse = " ")
 }
 
 
 paste_suitabilities <- function(df, colname){
-  paste0(paste0("[", colname, ","), paste0(df$cell, "]", " ", as.vector(df[colname][,1])))
+  filtered_df <- df[df[[colname]] == 1, ]
+  paste0(paste0("[", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
 }
 
 
