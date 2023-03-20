@@ -40,7 +40,7 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
     #terraOptions(tempdir = paste0(getwd(), "/Temp"))
     SuitabilityLanduseTemp <- Rasterspecieslanduse[[i]] |>
       as.data.frame(cells = T)
-    Result <-  landuses |> purrr::map(~paste_suitabilities_landuse(df = SuitabilityLanduseTemp, colname = .x, species = species_names[i])) |> purrr::reduce(paste)
+    Result <-  landuses |> purrr::map(~paste_suitabilities_landuse(df = SuitabilityLanduseTemp, colname = .x, species = species_names[i])) |> purrr::reduce(c)
     sink(paste0(name, ".dat"), append = T)
     cat(gsub(Result, pattern = "\\[", replacement = "\n ["))
     sink()
@@ -54,7 +54,7 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
   }
 
   sink(paste0(name, ".dat"), append = T)
-  cat(" ;")
+  cat(" ; \n")
   sink()
 }
 
