@@ -37,5 +37,6 @@ Species_Landuse <- Species_Landuse |> purrr::map(terra::unwrap)
 species_suitability_landuse(Rasterspecieslanduse = Species_Landuse,
 species_names = c("Spp1", "Spp2", "Spp3", "Spp4"),
 landuses = c("Agriculture", "Forest", "Urban"), name = "Test")
+file.remove("Test.dat")
 
 }
