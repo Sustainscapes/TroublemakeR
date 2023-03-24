@@ -1,16 +1,16 @@
 Package: TroublemakeR
 Title: Generates Spatial Problems in R for AMPL
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Derek", family ="Corcoran",  
     email = "derek.corcoran.barrios@gmail.com", role = c("aut", "cre"))
-Description: Based on spatial datasets this package generates .
+Description: Based on spatial datasets this package generates datasets for the AMPL software.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Depends: 
-    R (>= 2.10)
+    R (>= 4.1.0)
 LazyData: true
 Imports: 
     purrr,
