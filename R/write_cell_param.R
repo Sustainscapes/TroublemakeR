@@ -74,5 +74,12 @@ paste_params <- function(df, default){
   if(!is.null(default)){
     df <- df[df[["Param"]] != default, ]
   }
-  paste0(paste0("["), paste0(df$cell, "]", " ", as.vector(df["Param"][,1])), " \n")
+
+  result <- paste0("[", df$cell, "] ", as.vector(df$Param), "\n")
+
+  last_row <- nrow(df)
+  result[last_row] <- gsub("\n", "", result[last_row])
+
+  return(result)
 }
+
