@@ -84,20 +84,7 @@ troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_name
                          name = "Problem",
                          verbose = FALSE){
   if(!is.null(Rasterdomain)){
-    TempDomain <-  TroublemakeR::define_cells(Rasterdomain = Rasterdomain)
-    if(file.exists(paste0(name, ".dat"))){
-      sink(paste0(name, ".dat"), append = T)
-      cat(TempDomain)
-      cat("\n")
-      sink()
-    }
-    if(!file.exists(paste0(name, ".dat"))){
-      sink(paste0(name, ".dat"), append = F)
-      cat(TempDomain)
-      cat("\n")
-      sink()
-    }
-
+    TempDomain <-  TroublemakeR::define_cells(Rasterdomain = Rasterdomain, name = name)
     if(verbose){
       message("TempDomain ready")
     }

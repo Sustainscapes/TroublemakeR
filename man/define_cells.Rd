@@ -4,10 +4,12 @@
 \alias{define_cells}
 \title{Define Cells}
 \usage{
-define_cells(Rasterdomain)
+define_cells(Rasterdomain, name = "Problem")
 }
 \arguments{
 \item{Rasterdomain}{A Raster object with any value in the cells that are part of the problem and NA values where the problem is not to be solved}
+
+\item{name}{The name of the output file}
 }
 \value{
 A character vector to be used in troblemaker
@@ -24,6 +26,8 @@ terra::unwrap()
 # Generate the "Problem.dat" file
 
 define_cells(Test[[1]])
+
+file.remove("Problem.dat")
 
 }
 \author{
