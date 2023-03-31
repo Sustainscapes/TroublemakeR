@@ -97,7 +97,7 @@ file.remove("Problem2.dat")
  Rastercurrentlanduse = CurrentLU,
  budget = 2,
  name = "Problem3",
- verbose = TRUE)
+ verbose = FALSE)
 
  file.remove("Problem3.dat")
 

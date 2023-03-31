@@ -39,4 +39,6 @@ define_cells <- function(Rasterdomain, name = "Problem"){
     cat("\n")
     sink()
   }
+  rm(Result)
+  gc()
 }

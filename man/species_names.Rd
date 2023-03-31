@@ -4,10 +4,12 @@
 \alias{species_names}
 \title{Species names}
 \usage{
-species_names(species_names = NULL)
+species_names(species_names = NULL, name = "Problem")
 }
 \arguments{
 \item{species_names}{a vector with the names of species}
+
+\item{name}{The name of the output file}
 }
 \value{
 A character vector to be used in troblemaker
@@ -18,7 +20,7 @@ This function takes a vector of species names and adds it to the problem in prob
 \examples{
 
 species_names(species_names = c("Spp1", "Spp2"))
-
+file.remove("Problem.dat")
 }
 \author{
 Derek Corcoran

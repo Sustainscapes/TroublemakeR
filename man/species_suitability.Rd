@@ -4,12 +4,22 @@
 \alias{species_suitability}
 \title{Calculate species suitability}
 \usage{
-species_suitability(Rastercurrent, species_names)
+species_suitability(
+  Rastercurrent,
+  species_names,
+  name = "Problem",
+  verbose = FALSE
+)
 }
 \arguments{
 \item{Rastercurrent}{raster object of current suitability}
 
 \item{species_names}{character vector of species names}
+
+\item{name}{The name of the output file}
+
+\item{verbose}{Logical whether messages will be written while the
+function is generating calculations, defaults to FALSE}
 }
 \value{
 character string of species suitabilities
@@ -23,4 +33,5 @@ data(Current)
 Current <- terra::unwrap(Current)
 species_suitability(Rastercurrent = Current, species_names = c("Spp1", "Spp2", "Spp3", "Spp4"))
 
+file.remove("Problem.dat")
 }

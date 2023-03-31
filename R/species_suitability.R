@@ -2,6 +2,9 @@
 #' @description Calculate species suitability from a given raster and species names
 #' @param Rastercurrent raster object of current suitability
 #' @param species_names character vector of species names
+#' @param name The name of the output file
+#' @param verbose Logical whether messages will be written while the
+#' function is generating calculations, defaults to FALSE
 #' @return character string of species suitabilities
 #' @export
 #'
@@ -11,15 +14,33 @@
 #' Current <- terra::unwrap(Current)
 #' species_suitability(Rastercurrent = Current, species_names = c("Spp1", "Spp2", "Spp3", "Spp4"))
 #'
+#'file.remove("Problem.dat")
 #' @importFrom purrr reduce map
 #'
 #' @importFrom terra as.data.frame
 #'
-species_suitability <- function(Rastercurrent, species_names){
+species_suitability <- function(Rastercurrent, species_names, name = "Problem", verbose = FALSE){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
   result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(paste) |> paste(collapse = " ")
-  paste(c("param SpeciesSuitability default 0 :=", result,  ";"), collapse = " ")
+  TempSpeciesNames <- paste(c("param SpeciesSuitability default 0 :=", result,  ";"), collapse = " ")
+  if(file.exists(paste0(name, ".dat"))){
+    sink(paste0(name, ".dat"), append = T)
+    cat(TempSpeciesNames)
+    cat("\n")
+    sink()
+  }
+  if(!file.exists(paste0(name, ".dat"))){
+    sink(paste0(name, ".dat"), append = F)
+    cat(TempSpeciesNames)
+    cat("\n")
+    sink()
+  }
+  if(verbose){
+    message("TempSpeciesNames ready")
+  }
+  rm(TempSpeciesNames)
+  gc()
 }
 
 

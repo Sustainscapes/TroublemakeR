@@ -4,10 +4,12 @@
 \alias{landuse_names}
 \title{Landuse names}
 \usage{
-landuse_names(landuses = NULL)
+landuse_names(landuses = NULL, name = "Problem")
 }
 \arguments{
 \item{landuses}{a vector with the names of the landuses}
+
+\item{name}{The name of the output file}
 }
 \value{
 A character vector to be used in troblemaker
@@ -18,6 +20,11 @@ This function takes a vector of landuse names and adds it to the problem in prob
 \examples{
 
 landuse_names(landuses =  c("Agriculture", "Forest", "Urban"))
+
+# delete the file so the test on cran can pass this
+
+file.remove("Problem.dat")
+
 
 }
 \author{
