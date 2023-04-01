@@ -1,10 +1,19 @@
 Package: TroublemakeR
-Title: Generates Spatial Problems in R for AMPL
+Title: Generates Spatial Problems in R for 'AMPL'
 Version: 0.0.1
 Authors@R: 
-    person(given = "Derek", family ="Corcoran",  
-    email = "derek.corcoran.barrios@gmail.com", role = c("aut", "cre"))
-Description: Based on spatial datasets this package generates datasets for the AMPL software.
+    person(given = "Derek", family ="Corcoran",
+           email = "derek.corcoran.barrios@gmail.com", 
+           role = c("aut", "cre"))
+Description: 'TroublemakeR' is an R package designed to generate .dat files for the 'AMPL'
+             software using spatial data, particularly rasters. With this package, users can 
+             easily create datasets for use with 'AMPL', a widely-used optimization modeling
+             language. 'TroublemakeR' provides a range of methods for generating these datasets, 
+             including support for various spatial data formats and different problem types. 
+             By automating the process of generating 'AMPL' datasets, this package can help 
+             streamline optimization workflows and make it easier to solve complex optimization 
+             problems. The methods implemented in this package are described in detail in Fourer 
+             et al. (2002) doi:10.1287/mnsc.36.5.519.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
