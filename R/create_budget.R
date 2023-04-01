@@ -2,7 +2,10 @@
 #'
 #' @description
 #' This function generates or appends the budget and transition cost to
-#' a .dat file for ampl
+#' a .dat file for ampl. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #'
 #' @param budget maximum cost for the problem
 #' @param Rastercurrentlanduse raster object of current landuses
@@ -10,7 +13,7 @@
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
-#' @return A .dat file with the spatial problem formated for AMPL
+#' @return A .dat file. This function is used for the side-effect of writing values to a file.
 #'
 #' @export
 #'

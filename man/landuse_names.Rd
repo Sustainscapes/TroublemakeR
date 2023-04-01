@@ -12,10 +12,13 @@ landuse_names(landuses = NULL, name = "Problem")
 \item{name}{The name of the output file}
 }
 \value{
-A character vector to be used in troblemaker
+.dat file. This function is used for the side-effect of writing values to a file.
 }
 \description{
-This function takes a vector of landuse names and adds it to the problem in problemaker
+This function takes a vector of landuse names and writes them to a .dat file. The file
+will be written to the location specified by the \code{name} argument. If the file
+already exists, it will be overwritten. The file format is plain text, with each
+line terminated by a newline character.
 }
 \examples{
 

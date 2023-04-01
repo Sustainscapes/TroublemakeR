@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_ampl_lines.R
 \name{write_ampl_lines}
 \alias{write_ampl_lines}
-\title{Create budget}
+\title{Writes an AMPL line}
 \usage{
 write_ampl_lines(line, name = "Problem")
 }
@@ -11,9 +11,14 @@ write_ampl_lines(line, name = "Problem")
 
 \item{name}{The name of the output file}
 }
+\value{
+.dat file. This function is used for the side-effect of writing values to a file.
+}
 \description{
-This function generates or appends the budget and transition cost to
-a .dat file for ampl
+This function takes a character and writes them to a .dat file. The file
+will be written to the location specified by the \code{name} argument. If the file
+already exists, it will be overwritten. The file format is plain text, with each
+line terminated by a newline character.
 }
 \examples{
 

@@ -1,7 +1,10 @@
 #' @title Write cell parameters
 #'
 #' @description
-#' This function takes a Raster object and creates a character vector made for the troublemaker function
+#' This function takes a Raster object, uses its values as a parameter and writes them to a .dat file. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #'
 #' @param Rasterparam A Raster object with the values for the parameter
 #' @param parameter The name of the parameter to use
@@ -12,7 +15,7 @@
 #' function is generating calculations, defaults to FALSE
 #' @importFrom terra as.data.frame
 #'
-#' @return A character vector to be used in troblemaker
+#' @return .dat file. This function is used for the side-effect of writing values to a file.
 #'
 #' @export
 #'

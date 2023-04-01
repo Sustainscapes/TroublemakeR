@@ -1,11 +1,14 @@
 #' @title Species names
 #'
 #' @description
-#' This function takes a vector of species names and adds it to the problem in problemaker
+#' This function takes a vector of species names and writes them to a .dat file. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #'
 #' @param species_names a vector with the names of species
 #' @param name The name of the output file
-#' @return A character vector to be used in troblemaker
+#' @return  .dat file. This function is used for the side-effect of writing values to a file.
 #'
 #' @export
 #'

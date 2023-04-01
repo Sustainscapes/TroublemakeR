@@ -37,7 +37,7 @@ troublemaker(
 function is generating calculations, defaults to FALSE}
 }
 \value{
-A .dat file with the spatial problem formated for AMPL
+A .dat file with the spatial problem formated for AMPL. This function is used for the side-effect of writing values to a file.
 }
 \description{
 This function is a metafunction with several functions inside of it it takes several spatial objects and generates a .dat file with a spatial dataset for AMPL

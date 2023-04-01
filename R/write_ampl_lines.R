@@ -1,11 +1,15 @@
-#' @title Create budget
+#' @title Writes an AMPL line
 #'
 #' @description
-#' This function generates or appends the budget and transition cost to
-#' a .dat file for ampl
+#' This function takes a character and writes them to a .dat file. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #'
 #' @param line line to be written to .dat file
 #' @param name The name of the output file
+#'
+#' @return .dat file. This function is used for the side-effect of writing values to a file.
 #'
 #' @examples
 #'

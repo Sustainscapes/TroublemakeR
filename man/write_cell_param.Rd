@@ -26,10 +26,13 @@ there is one, otherwise keep it as NULL}
 function is generating calculations, defaults to FALSE}
 }
 \value{
-A character vector to be used in troblemaker
+.dat file. This function is used for the side-effect of writing values to a file.
 }
 \description{
-This function takes a Raster object and creates a character vector made for the troublemaker function
+This function takes a Raster object, uses its values as a parameter and writes them to a .dat file. The file
+will be written to the location specified by the \code{name} argument. If the file
+already exists, it will be overwritten. The file format is plain text, with each
+line terminated by a newline character.
 }
 \examples{
 

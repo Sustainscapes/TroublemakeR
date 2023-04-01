@@ -25,11 +25,14 @@ create_budget(
 function is generating calculations, defaults to FALSE}
 }
 \value{
-A .dat file with the spatial problem formated for AMPL
+A .dat file. This function is used for the side-effect of writing values to a file.
 }
 \description{
 This function generates or appends the budget and transition cost to
-a .dat file for ampl
+a .dat file for ampl. The file
+will be written to the location specified by the \code{name} argument. If the file
+already exists, it will be overwritten. The file format is plain text, with each
+line terminated by a newline character.
 }
 \examples{
 

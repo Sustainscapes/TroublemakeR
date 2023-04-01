@@ -1,13 +1,16 @@
 #' @title Define Cells
 #'
 #' @description
-#' This function takes a Raster object and creates a character vector made for the troublemaker function
+#' This function takes a Raster object and identifies non NA cells and writes them to a .dat file. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #'
 #' @param Rasterdomain A Raster object with any value in the cells that are part of the problem and NA values where the problem is not to be solved
 #' @param name The name of the output file
 #' @importFrom terra as.data.frame
 #'
-#' @return A character vector to be used in troblemaker
+#' @return .dat file. This function is used for the side-effect of writing values to a file.
 #'
 #' @export
 #'

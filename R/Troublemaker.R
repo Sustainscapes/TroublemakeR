@@ -13,7 +13,7 @@
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
-#' @return A .dat file with the spatial problem formated for AMPL
+#' @return A .dat file with the spatial problem formated for AMPL. This function is used for the side-effect of writing values to a file.
 #'
 #' @export
 #'

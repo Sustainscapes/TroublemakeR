@@ -22,10 +22,13 @@ species_suitability(
 function is generating calculations, defaults to FALSE}
 }
 \value{
-character string of species suitabilities
+.dat file. This function is used for the side-effect of writing values to a file.
 }
 \description{
-Calculate species suitability from a given raster and species names
+Calculate species suitability from a given raster and species names and writes them to a .dat file. The file
+will be written to the location specified by the \code{name} argument. If the file
+already exists, it will be overwritten. The file format is plain text, with each
+line terminated by a newline character.
 }
 \examples{
 library(terra)

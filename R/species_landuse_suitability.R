@@ -1,12 +1,15 @@
 #' @title Calculate species suitability for each landuse
-#' @description Calculate species suitability from a given raster, species names and landuse
+#' @description Calculate species suitability from a given raster, species names and landuse and writes them to a .dat file. The file
+#' will be written to the location specified by the `name` argument. If the file
+#' already exists, it will be overwritten. The file format is plain text, with each
+#' line terminated by a newline character.
 #' @param Rasterspecieslanduse a list of species suitability for each landuse
 #' @param species_names character vector of species names
 #' @param landuses character vector with all landuses
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
-#' @return character string of species suitabilities for each landuse
+#' @return .dat file. This function is used for the side-effect of writing values to a file.
 #' @export
 #'
 #' @examples
