@@ -6,3 +6,6 @@
 ^\.github$
 ^inst/ex/FullModel\.mod$
 ^inst/ex/Model\.mod$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

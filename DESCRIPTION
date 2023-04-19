@@ -20,7 +20,9 @@ Depends:
     R (>= 4.1.0)
 LazyData: true
 Imports: 
+    data.table,
     purrr,
     terra
-URL: https://github.com/Sustainscapes/TroublemakeR
+URL: https://github.com/Sustainscapes/TroublemakeR,
+    https://sustainscapes.github.io/TroublemakeR/
 BugReports: https://github.com/Sustainscapes/TroublemakeR/issues
