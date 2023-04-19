@@ -12,6 +12,7 @@ troublemaker(
   landuses = NULL,
   budget = NULL,
   Rastercurrentlanduse = NULL,
+  directions = NULL,
   name = "Problem",
   verbose = FALSE
 )
@@ -30,6 +31,16 @@ troublemaker(
 \item{budget}{maximum cost for the problem}
 
 \item{Rastercurrentlanduse}{raster object of current landuses}
+
+\item{directions}{just as in \code{\link{adjacent}} character or
+matrix to indicated the directions in which cells are considered
+connected.
+The following character values are allowed: "rook" or "4" for the
+horizontal and vertical neighbors; "bishop" to get the diagonal
+neighbors; "queen" or "8" to get the vertical, horizontal and
+diagonal neighbors; or "16" for knight and one-cell queen move
+neighbors. If directions is a matrix it should have odd dimensions
+and have logical (or 0, 1) values}
 
 \item{name}{The name of the output file}
 

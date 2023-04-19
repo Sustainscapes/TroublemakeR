@@ -23,7 +23,7 @@ already exists, it will be overwritten. The file format is plain text, with each
 line terminated by a newline character.
 }
 \examples{
-
+\donttest{
 library(terra)
 r <- rast(nrows=500, ncols=500)
 
@@ -41,6 +41,7 @@ values(r)[ForNA] <- NA
 
 find_connections(Rasterdomain = r, name = "Edges")
 file.remove("Edges.dat")
+}
 }
 \author{
 Derek Corcoran

@@ -11,6 +11,15 @@
 #' @param budget maximum cost for the problem
 #' @param Rastercurrentlanduse raster object of current landuses
 #' @param name The name of the output file
+#' @param directions just as in \code{\link{adjacent}} character or
+#' matrix to indicated the directions in which cells are considered
+#' connected.
+#' The following character values are allowed: "rook" or "4" for the
+#' horizontal and vertical neighbors; "bishop" to get the diagonal
+#' neighbors; "queen" or "8" to get the vertical, horizontal and
+#' diagonal neighbors; or "16" for knight and one-cell queen move
+#' neighbors. If directions is a matrix it should have odd dimensions
+#' and have logical (or 0, 1) values
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
 #' @return A .dat file with the spatial problem formated for AMPL. This function is used for the side-effect of writing values to a file.
@@ -81,12 +90,21 @@
 troublemaker <- function(Rasterdomain = NULL, Rastercurrent = NULL, species_names = NULL, Rasterspecieslanduse = NULL, landuses = NULL,
                          budget = NULL,
                          Rastercurrentlanduse = NULL,
+                         directions = NULL,
                          name = "Problem",
                          verbose = FALSE){
   if(!is.null(Rasterdomain)){
     TroublemakeR::define_cells(Rasterdomain = Rasterdomain, name = name)
     if(verbose){
       message("TempDomain ready")
+    }
+  }
+  if(!is.null(Rasterdomain) & !is.null(directions)){
+    TroublemakeR::find_connections(Rasterdomain = Rasterdomain,
+                                   name = name,
+                                   directions = directions)
+    if(verbose){
+      message("connections ready")
     }
   }
   if(!is.null(species_names)){
