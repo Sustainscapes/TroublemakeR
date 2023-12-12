@@ -26,7 +26,7 @@
 species_suitability <- function(Rastercurrent, species_names, name = "Problem", parameter = "SpeciesSuitability", verbose = FALSE){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
-  result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(paste) |> paste(collapse = " ")
+  result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(c) |> paste(collapse = " ")
   TempSpeciesNames <- paste(paste("param", parameter, "default 0 :=", result,  ";"), collapse = " ")
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
