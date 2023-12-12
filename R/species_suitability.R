@@ -5,6 +5,7 @@
 #' line terminated by a newline character.
 #' @param Rastercurrent raster object of current suitability
 #' @param species_names character vector of species names
+#' @param parameter The name of the parameter to use
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
@@ -22,11 +23,11 @@
 #'
 #' @importFrom terra as.data.frame
 #'
-species_suitability <- function(Rastercurrent, species_names, name = "Problem", verbose = FALSE){
+species_suitability <- function(Rastercurrent, species_names, name = "Problem", parameter = "SpeciesSuitability", verbose = FALSE){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
   result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(paste) |> paste(collapse = " ")
-  TempSpeciesNames <- paste(c("param SpeciesSuitability default 0 :=", result,  ";"), collapse = " ")
+  TempSpeciesNames <- paste(paste("param", parameter, "default 0 :=", result,  ";"), collapse = " ")
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
     cat(TempSpeciesNames)
@@ -48,7 +49,7 @@ species_suitability <- function(Rastercurrent, species_names, name = "Problem", 
 
 
 paste_suitabilities <- function(df, colname){
-  filtered_df <- df[df[[colname]] == 1, ]
+  filtered_df <- df[df[[colname]] > 0, ]
   paste0(paste0("[", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
 }
 

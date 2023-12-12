@@ -8,6 +8,7 @@ species_suitability(
   Rastercurrent,
   species_names,
   name = "Problem",
+  parameter = "SpeciesSuitability",
   verbose = FALSE
 )
 }
@@ -17,6 +18,8 @@ species_suitability(
 \item{species_names}{character vector of species names}
 
 \item{name}{The name of the output file}
+
+\item{parameter}{The name of the parameter to use}
 
 \item{verbose}{Logical whether messages will be written while the
 function is generating calculations, defaults to FALSE}

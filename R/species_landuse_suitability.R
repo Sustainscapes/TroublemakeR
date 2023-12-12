@@ -6,6 +6,7 @@
 #' @param Rasterspecieslanduse a list of species suitability for each landuse
 #' @param species_names character vector of species names
 #' @param landuses character vector with all landuses
+#' @param parameter The name of the parameter to use
 #' @param name The name of the output file
 #' @param verbose Logical whether messages will be written while the
 #' function is generating calculations, defaults to FALSE
@@ -26,16 +27,16 @@
 #' @importFrom terra as.data.frame
 #
 
-species_suitability_landuse <- function(Rasterspecieslanduse, species_names, landuses, name = "Problem", verbose = FALSE){
+species_suitability_landuse <- function(Rasterspecieslanduse, species_names, landuses, parameter = "SpeciesSuitabilityLanduse", name = "Problem", verbose = FALSE){
 
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
-    cat("param SpeciesSuitabilityLanduse default 0 :=")
+    cat(paste("param", parameter, "default 0 :="))
     sink()
   }
   if(!file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = F)
-    cat("param SpeciesSuitabilityLanduse default 0 :=")
+    cat(paste("param", parameter, "default 0 :="))
     sink()
   }
 
@@ -63,7 +64,7 @@ species_suitability_landuse <- function(Rasterspecieslanduse, species_names, lan
 }
 
 paste_suitabilities_landuse <- function(df, species, colname){
-  filtered_df <- df[df[[colname]] == 1, ]
+  filtered_df <- df[df[[colname]] >= 0, ]
   paste0(paste0("[", species, ",", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
 }
 

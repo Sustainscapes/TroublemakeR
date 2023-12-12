@@ -8,6 +8,7 @@ species_suitability_landuse(
   Rasterspecieslanduse,
   species_names,
   landuses,
+  parameter = "SpeciesSuitabilityLanduse",
   name = "Problem",
   verbose = FALSE
 )
@@ -18,6 +19,8 @@ species_suitability_landuse(
 \item{species_names}{character vector of species names}
 
 \item{landuses}{character vector with all landuses}
+
+\item{parameter}{The name of the parameter to use}
 
 \item{name}{The name of the output file}
 
