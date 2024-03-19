@@ -26,7 +26,12 @@
 species_suitability <- function(Rastercurrent, species_names, name = "Problem", parameter = "SpeciesSuitability", verbose = FALSE){
   SuitabilityTemp <- terra::as.data.frame(Rastercurrent, cells = T)
   colnames(SuitabilityTemp)[-1] <- species_names
-  result <- species_names |> purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |> purrr::reduce(c) |> paste(collapse = " ")
+  result <- species_names |>
+    purrr::map(~paste_suitabilities(df = SuitabilityTemp, colname = .x)) |>
+    purrr::reduce(c)
+
+  result <- result[result != ""]
+  result <- result |> paste(collapse = " ")
   TempSpeciesNames <- paste(paste("param", parameter, "default 0 :=", result,  ";"), collapse = " ")
   if(file.exists(paste0(name, ".dat"))){
     sink(paste0(name, ".dat"), append = T)
@@ -50,7 +55,11 @@ species_suitability <- function(Rastercurrent, species_names, name = "Problem", 
 
 paste_suitabilities <- function(df, colname){
   filtered_df <- df[df[[colname]] > 0, ]
-  paste0(paste0("[", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
+  if(nrow(filtered_df) > 0){
+    paste0(paste0("[", colname, ","), paste0(filtered_df$cell, "]", " ", as.vector(filtered_df[colname][,1])))
+  } else if(nrow(filtered_df) == 0){
+    ""
+  }
 }
 
 
