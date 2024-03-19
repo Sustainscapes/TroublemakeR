@@ -93,7 +93,7 @@
 
 
 <dt>directions</dt>
-<dd><p>just as in <code><a href="https://rdrr.io/pkg/terra/man/adjacent.html" class="external-link">adjacent</a></code> character or
+<dd><p>just as in <code><a href="https://rspatial.github.io/terra/reference/adjacent.html" class="external-link">adjacent</a></code> character or
 matrix to indicated the directions in which cells are considered
 connected.
 The following character values are allowed: "rook" or "4" for the
@@ -131,9 +131,9 @@ function is generating calculations, defaults to FALSE</p></dd>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Current</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Test</span> <span class="op">&lt;-</span> <span class="va">Species</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">Current</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">Current</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Current</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">Current</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate the "Problem.dat" file</span></span></span>
 <span class="r-in"><span></span></span>
@@ -154,9 +154,9 @@ function is generating calculations, defaults to FALSE</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Test</span> <span class="op">&lt;-</span> <span class="va">Species</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">Species_Landuse</span> <span class="op">&lt;-</span> <span class="va">Species_Landuse</span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Species_Landuse</span> <span class="op">&lt;-</span> <span class="va">Species_Landuse</span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="va"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate the "Problem2.dat" file</span></span></span>
 <span class="r-in"><span></span></span>
@@ -174,7 +174,7 @@ function is generating calculations, defaults to FALSE</p></dd>
 <span class="r-in"><span> <span class="co"># Example 3 with budget and transition cost</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"CurrentLanduse"</span><span class="op">)</span></span></span>
-<span class="r-in"><span> <span class="va">CurrentLU</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">CurrentLanduse</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">CurrentLU</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">CurrentLanduse</span><span class="op">)</span></span></span>
 <span class="r-in"><span> <span class="fu">TroublemakeR</span><span class="fu">::</span><span class="fu">troublemaker</span><span class="op">(</span>Rasterdomain <span class="op">=</span><span class="va">Test</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span></span>
 <span class="r-in"><span> Rasterspecieslanduse <span class="op">=</span> <span class="va">Species_Landuse</span>,</span></span>
 <span class="r-in"><span> species_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Spp1"</span>, <span class="st">"Spp2"</span>, <span class="st">"Spp3"</span>, <span class="st">"Spp4"</span><span class="op">)</span>,</span></span>
@@ -184,8 +184,8 @@ function is generating calculations, defaults to FALSE</p></dd>
 <span class="r-in"><span> name <span class="op">=</span> <span class="st">"Problem3"</span>,</span></span>
 <span class="r-in"><span> verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           used (Mb) gc trigger  (Mb) max used  (Mb)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ncells 1577130 84.3    2931548 156.6  2744386 146.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Vcells 2859923 21.9   10539817  80.5 10539817  80.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ncells 1590217   85    2887037 154.2  2591282 138.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Vcells 2872713   22   10146329  77.5 10146324  77.5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="st">"Problem3.dat"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

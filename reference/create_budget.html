@@ -107,7 +107,7 @@ function is generating calculations, defaults to FALSE</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">CurrentLanduse</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">CurrentLU</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">CurrentLanduse</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">CurrentLU</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/wrap.html" class="external-link">unwrap</a></span><span class="op">(</span><span class="va">CurrentLanduse</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">TroublemakeR</span><span class="fu">::</span><span class="fu">create_budget</span><span class="op">(</span>budget <span class="op">=</span> <span class="fl">2</span>,</span></span>
@@ -115,9 +115,9 @@ function is generating calculations, defaults to FALSE</p></dd>
 <span class="r-in"><span>landuses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>, <span class="st">"Urban"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>name <span class="op">=</span> <span class="st">"Problem"</span>,</span></span>
 <span class="r-in"><span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 1 of 3 ready 2023-12-12 14:56:23.308582</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 2 of 3 ready 2023-12-12 14:56:23.467262</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 3 of 3 ready 2023-12-12 14:56:23.594272</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 1 of 3 ready 2024-03-19 11:03:00.366838</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 2 of 3 ready 2024-03-19 11:03:00.532656</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Landuse 3 of 3 ready 2024-03-19 11:03:00.653789</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># delete the file so the test on cran can pass this</span></span></span>
 <span class="r-in"><span></span></span>
