@@ -21,7 +21,9 @@ Depends:
 LazyData: true
 Imports: 
     data.table,
+    dplyr,
     purrr,
+    stringr,
     terra
 URL: https://github.com/Sustainscapes/TroublemakeR,
     https://sustainscapes.github.io/TroublemakeR/
