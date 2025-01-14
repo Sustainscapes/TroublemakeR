@@ -9,7 +9,7 @@
 #' @param Rasterdomain A Raster object with any value in the cells that are part of the problem and NA values where the problem is not to be solved
 #' @param name The name of the output file
 #' @param directions character or matrix to indicated the directions in which cells are considered connected. The following character values are allowed: "rook" or "4" for the horizontal and vertical neighbors; "bishop" to get the diagonal neighbors; "queen" or "8" to get the vertical, horizontal and diagonal neighbors; or "16" for knight and one-cell queen move neighbors. If directions is a matrix it should have odd dimensions and have logical (or 0, 1) values
-#' @importFrom terra adjacent ncell
+#' @importFrom terra adjacent ncell as.data.frame
 #' @importFrom data.table as.data.table := setnames
 #'
 #' @return .dat file. This function is used for the side-effect of writing values to a file.
@@ -40,16 +40,15 @@
 
 find_connections <- function(Rasterdomain, name = "Problem", directions = "rook"){
   V1 <- V2 <- Expression <- NULL
-  NAs <- as.vector(is.na(Rasterdomain))
-  adj_df <- terra::adjacent(Rasterdomain, ((1:ncell(Rasterdomain))[!NAs]),
-                     directions= directions,
-                     pairs = TRUE,
-                     symmetrical=TRUE)  |>
-    data.table::as.data.table() |>
-    data.table::setnames(c("V1", "V2"))
-
-  dt_filtered <- adj_df[!(V1 %in% ((1:ncell(Rasterdomain))[NAs]) | V2 %in% ((1:ncell(Rasterdomain))[NAs]))]
-  dt_filtered <- dt_filtered[, Expression := paste0("(", V1,",", V2, ")")]
-  write_ampl_lines(line = paste("set E:=", paste(dt_filtered$Expression, collapse = " ")), name = name)
+  NotNAs <- as.vector(terra::as.data.frame(Rasterdomain, cells = T)$cell)
+  adj_df <- data.table::setnames(data.table::as.data.table(terra::adjacent(Rasterdomain,
+                                                                           (NotNAs), directions = directions,
+                                                                           pairs = TRUE, symmetrical = TRUE)), c("V1", "V2"))
+  dt_filtered <- adj_df[V1 %in% NotNAs &
+                          V2 %in% NotNAs]
+  dt_filtered <- dt_filtered[, `:=`(Expression, paste0("(",
+                                                       V1, ",", V2, ")"))]
+  write_ampl_lines(line = paste("set E:=", paste(dt_filtered$Expression,
+                                                 collapse = " ")), name = name)
 }
 
